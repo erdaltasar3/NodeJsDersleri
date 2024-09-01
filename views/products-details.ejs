@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-warning">
+    <h1><%= name %></h1>
+    <img src="/images/<%= imageUrl %>" alt="" width="200">
+    <p>price : <%= price %></p>
+    <p>
+        <% if (isActive) { %>
+         <span>ürün satışta</span>
+        <% } else { %>
+            <span>ürün satışta değiş</span>
+            <% } %>
+
+    </p>
+    
+</body>
+</html>
