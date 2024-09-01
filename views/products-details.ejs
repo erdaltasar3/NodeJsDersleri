@@ -7,18 +7,34 @@
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-warning">
-    <h1><%= name %></h1>
-    <img src="/images/<%= imageUrl %>" alt="" width="200">
-    <p>price : <%= price %></p>
-    <p>
-        <% if (isActive) { %>
-         <span>ürün satışta</span>
-        <% } else { %>
-            <span>ürün satışta değil</span>
-            <% } %>
+<body>
 
-    </p>
+    <%- include('partials/nav') %>
+    
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                
+                    <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="/images/<%=imageUrl %>" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= name %></h5>
+                                    <p class="card-text"><%= price %></p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Sed sint adipisci, veritatis itaque dolor amet maiores
+                                        ullam commodi sapiente consectetur.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
