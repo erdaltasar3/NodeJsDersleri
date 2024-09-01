@@ -1,22 +1,13 @@
 const express = require("express");
 const app = express();
 
+const db = require("./data/db");
+
 app.set("view engine","ejs");
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
-const mysql = require("mysql2");
-const config = require("./config")
 
-let connection = mysql.createConnection(config.db);
-
-connection.connect(function(err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("mysql baglantisi basarili");
-    }
-})
 
 
 
@@ -40,9 +31,22 @@ app.use("/products", function(req,res) {
 });
 
 app.use("/", function(req,res) {
-    res.render("index", {
-        urunler:data
+
+    db.execute("select * from products")
+
+    // baglanti basarili ve sonuç dönüyor.
+    .then(result => {
+        console.log(result[0]);
+
+        res.render("index", {
+            urunler:result[0]
+        });
+    })
+    // bağlantı başarısız ve hata dönüyor
+    .catch(err => {
+        console.log(err);
     });
+
 });
 
 app.listen(3000, () => {
