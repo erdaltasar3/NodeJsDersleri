@@ -6,13 +6,9 @@ app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
 const mysql = require("mysql2");
+const config = require("./config")
 
-let connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "12345678",
-    database: "nodedb"
-});
+let connection = mysql.createConnection(config.db);
 
 connection.connect(function(err) {
     if (err) {
